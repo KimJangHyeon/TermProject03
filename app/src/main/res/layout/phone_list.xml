@@ -79,20 +79,17 @@
                 android:weightSum="1">
 
                 <LinearLayout
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:layout_width="222dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.67">
+                    android:layout_weight="0.67"
+                    android:weightSum="1">
 
                     <ListView
                         android:layout_width="200dp"
-                        android:layout_height="match_parent" />
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.26"></LinearLayout>
+                        android:layout_weight="0.71" />
+
                 </LinearLayout>
 
             </LinearLayout>
