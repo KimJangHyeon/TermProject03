@@ -63,12 +63,38 @@
                     <ImageButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:srcCompat="@drawable/taskbar"
+                        app:srcCompat="@drawable/dial1"
                         android:background="#00ff0000"
-                        android:padding="80sp"
+                        android:padding="120sp"
                         android:scaleType="centerCrop"
                         android:id="@+id/btn_phone_list" />
                 </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.10"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="222dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.67">
+
+                    <ListView
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.26"></LinearLayout>
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -90,27 +116,6 @@
                 </ScrollView>
             </LinearLayout>
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.10"
-                android:weightSum="1">
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.85">
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.15"></LinearLayout>
-            </LinearLayout>
         </LinearLayout>
 
 
