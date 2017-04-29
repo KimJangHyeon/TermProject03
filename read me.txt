@@ -1,0 +1,13 @@
+¹öÆ°¸í:
+btn_phone_list
+btn_message
+btn_record
+
+text_phoneNumber
+btn_phoneCall
+
+btn_number(n)
+btn_numberHash
+btn_numberStar
+btn_addPhoneNumber
+

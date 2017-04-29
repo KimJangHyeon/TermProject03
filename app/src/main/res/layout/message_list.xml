@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/message_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg"
     tools:context="com.example.rlawk.tremproject3.messageList">
 
     <LinearLayout
@@ -15,38 +17,70 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:weightSum="0.3">
+            android:weightSum="0.3"
+            android:layout_weight="0.03"
+            android:layout_height="73dp">
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1"></LinearLayout>
+                android:layout_weight="0.1">
+
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/viewrefresh"
+                    android:padding="105sp"
+                    android:scaleType="centerCrop"
+                    android:background="#00ff0000"
+                    android:id="@+id/btn_record" />
+            </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1"></LinearLayout>
+                android:layout_weight="0.1">
+
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/mail"
+                    android:background="#00ff0000"
+                    android:padding="110sp"
+                    android:scaleType="centerCrop"
+                    android:id="@+id/btn_message" />
+            </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1"></LinearLayout>
+                android:layout_weight="0.1">
+
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/taskbar"
+                    android:background="#00ff0000"
+                    android:padding="80sp"
+                    android:scaleType="centerCrop"
+                    android:id="@+id/btn_phone_list" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.8">
+            android:layout_weight="0.87"
+            android:weightSum="1">
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_weight="1.24">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -59,14 +93,16 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.1"
+            android:layout_weight="0.10"
             android:weightSum="1">
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="0.85"></LinearLayout>
+                android:layout_weight="0.85">
+
+            </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
