@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:background="#00ff0000"
                     app:srcCompat="@drawable/mail"
-                    android:padding="100sp"
+                    android:padding="110sp"
                     android:scaleType="centerCrop"
                     android:id="@+id/imageButton3" />
             </LinearLayout>
