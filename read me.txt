@@ -1,13 +1,40 @@
-버튼명:
-btn_phone_list
-btn_message
-btn_record
+<main>
+btn_phone_list - 전화번호록으로 이동
+btn_message - 메시지함으로 이동
+btn_record - 전화기록 페이지로 이동
 
 text_phoneNumber
+btn_addPhoneNumber - 이 번호를 추가하는 페이지로 이동 
+		     이때 버튼은 입력이 되어 있어야함
+
+btn_number(n) - 입력시 text_phoneNumber에 숫자 n을 추가
+btn_numberHash - 입력시 text_phoneNumber에 #을 추가 
+btn_numberStar - 입력시 text_phoneNumber에 *을 추가
 btn_phoneCall
 
-btn_number(n)
-btn_numberHash
-btn_numberStar
-btn_addPhoneNumber
 
+<call list>
+btn_phone_list - 전화번호록으로 이동
+btn_message - 메시지함으로 이동
+btn_record - 전화기록 페이지로 이동
+
+<phone list>
+btn_phone_list - 전화번호록으로 이동
+btn_message - 메시지함으로 이동
+btn_record - 전화기록 페이지로 이동
+
+<phone list add>
+btn_prev -
+
+<message list>
+btn_phone_list - 전화번호록으로 이동
+btn_message - 메시지함으로 이동
+btn_record - 전화기록 페이지로 이동
+
+<message per person>
+btn_phone_list - 전화번호록으로 이동
+btn_message - 메시지함으로 이동
+btn_record - 전화기록 페이지로 이동
+
+
+<db>
