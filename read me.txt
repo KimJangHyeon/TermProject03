@@ -23,8 +23,8 @@ btn_phone_list - 전화번호록으로 이동
 btn_message - 메시지함으로 이동
 btn_record - 전화기록 페이지로 이동
 
-<phone list add>
-btn_prev -
+<add person>
+btn_prev -있을지 없을지
 
 <message list>
 btn_phone_list - 전화번호록으로 이동

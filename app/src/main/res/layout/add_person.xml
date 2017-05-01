@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_person"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    tools:context="com.example.rlawk.tremproject3.Add_person"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/line"
+        android:weightSum="1">
+
+        <Button
+            android:text="cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/bg"
+            android:textColor="#ffffff"
+            android:textSize="30dp"
+            android:layout_margin="1dp"
+            android:id="@+id/button"
+            android:layout_weight="0.5" />
+
+        <Button
+            android:text="success"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/bg"
+            android:textColor="#ffffff"
+            android:layout_margin="1dp"
+            android:textSize="30dp"
+            android:id="@+id/button2"
+            android:layout_weight="0.5" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="232dp"
+        android:weightSum="1"
+        android:layout_weight="0.76">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@mipmap/ic_launcher"
+            android:id="@+id/imageView3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="131dp"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:background="@color/line"
+            android:weightSum="1">
+
+            <RelativeLayout android:layout_height="match_parent"
+                android:layout_width="120dp"
+                android:background="@color/bg"
+                android:layout_margin="1dp"
+                android:id="@+id/text_name">
+
+                <TextView
+                    android:text="NAME"
+                    android:textSize="30dp"
+                    android:layout_gravity="center"
+
+                    android:textColor="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView4" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="266dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.09">
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/editText"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+
+            android:weightSum="1">
+
+            <RelativeLayout android:layout_height="match_parent"
+                android:layout_width="120dp"
+                android:id="@+id/text_phone">
+
+                <TextView
+                    android:text="PHONE"
+                    android:textColor="#ffffff"
+                    android:gravity="center"
+                    android:padding="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView3" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -18,7 +18,8 @@
         <activity android:name=".CallList" />
         <activity android:name=".messageList" />
         <activity android:name=".MessagePerPerson" />
-        <activity android:name=".PhoneList"></activity>
+        <activity android:name=".PhoneList" />
+        <activity android:name=".Add_person"></activity>
     </application>
 
 </manifest>
