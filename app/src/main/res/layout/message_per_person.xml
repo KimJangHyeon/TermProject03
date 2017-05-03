@@ -118,6 +118,9 @@
             android:layout_weight="1.00"
             android:weightSum="1">
 
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </LinearLayout>
 
         <LinearLayout

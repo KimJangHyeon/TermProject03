@@ -99,16 +99,11 @@
                 android:layout_weight="0.87"
                 android:weightSum="1">
 
-                <ScrollView
+                <ListView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1.24">
+                    android:layout_weight="1.24" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" />
-                </ScrollView>
             </LinearLayout>
 
         </LinearLayout>
