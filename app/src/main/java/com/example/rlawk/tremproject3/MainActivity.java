@@ -1,8 +1,10 @@
 package com.example.rlawk.tremproject3;
 
 import android.content.Intent;
+import android.os.Debug;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -187,5 +189,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void addFilter(View v, TextView phoneNumber){
+        
     }
 }

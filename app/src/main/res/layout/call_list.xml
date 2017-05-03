@@ -66,7 +66,7 @@
                         android:background="#00ff0000"
                         android:padding="80sp"
                         android:scaleType="centerCrop"
-                        android:id="@+id/btn_phone_list" />
+                        android:id="@+id/btn_phoneList" />
                 </LinearLayout>
             </LinearLayout>
 

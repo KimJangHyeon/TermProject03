@@ -15,8 +15,8 @@ public class CallList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.call_list);
 
-        addListenerOnButtonPhoneList();
         addListenerOnButtonDial();
+        addListenerOnButtonPhoneList();
         addListenerOnButtonMessage();
     }
 
