@@ -53,7 +53,7 @@
                     android:background="#00ff0000"
                     android:padding="110sp"
                     android:scaleType="centerCrop"
-                    android:id="@+id/btn_message" />
+                    android:id="@+id/btn_dial" />
             </LinearLayout>
 
             <LinearLayout

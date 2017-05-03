@@ -3,7 +3,7 @@ package com.example.rlawk.tremproject3;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Add_person extends AppCompatActivity {
+public class AddPerson extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

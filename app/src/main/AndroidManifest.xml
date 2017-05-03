@@ -16,10 +16,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".CallList" />
-        <activity android:name=".messageList" />
+        <activity android:name=".MessageList" />
         <activity android:name=".MessagePerPerson" />
         <activity android:name=".PhoneList" />
-        <activity android:name=".Add_person"></activity>
+        <activity android:name=".AddPerson"></activity>
     </application>
 
 </manifest>
