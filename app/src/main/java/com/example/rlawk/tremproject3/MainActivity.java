@@ -17,6 +17,18 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton record, message, phoneList, add, phoneCall;
     private ImageButton one, two, three, four, zero, five, six, seven, eight, nine, hash, star;
     private TextView phoneNumber;
+    public View viewOne = findViewById(R.id.btn_number1);
+    public View viewTwo = findViewById(R.id.btn_number2);
+    public View viewThree = findViewById(R.id.btn_number3);
+    public View viewFour = findViewById(R.id.btn_number4);
+    public View viewFive = findViewById(R.id.btn_number5);
+    public View viewSix = findViewById(R.id.btn_number6);
+    public View viewSeven = findViewById(R.id.btn_number7);
+    public View viewEight = findViewById(R.id.btn_number8);
+    public View viewNine = findViewById(R.id.btn_number9);
+    public View viewZero = findViewById(R.id.btn_number0);
+    public View viewStar = findViewById(R.id.btn_numberStar);
+    public View viewHash = findViewById(R.id.btn_numberHash);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +97,8 @@ public class MainActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //Add person의 번호로 phoneNumber
+                //add person으로 이동
             }
         });
     }
@@ -105,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
         one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //하이폰 입력
+                //1입력
                 //예외처리
             }
         });
@@ -190,8 +205,112 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    public void makeFourFour(){
 
+    }
+    public void addSecondHyphen(TextView phoneNumber){
+        //지역번호가 없을 경우
+        //02 일경우&&phoneNumber이 6인 경우
+        //이외일 경우
+    }
+    public void addFirstHyphen(TextView phoneNumber){
+        if(phoneNumber.getText() == "02"){
+            phoneNumber.setText(phoneNumber.getText() + "-");
+        }
+        else if(phoneNumber.getText() == "031"){
+            phoneNumber.setText(phoneNumber.getText() + "-");
+        }
+        else if(phoneNumber.getText()=="032"){
+            phoneNumber.setText(phoneNumber.getText() + "-");
+        }
+        else if (phoneNumber.getText() == "051"){
+            phoneNumber.setText(phoneNumber.getText() + "-");
+        }
+        else if (phoneNumber.getText() == "053"){
+            phoneNumber.setText(phoneNumber.getText() + "-");
+        }
+        else if (phoneNumber.getText() == "062"){
+            phoneNumber.setText(phoneNumber.getText() + "-");
+        }
+        else if (phoneNumber.getText() == "042"){
+            phoneNumber.setText(phoneNumber.getText() + "-");
+        }
+        else if (phoneNumber.getText() == "052"){
+            phoneNumber.setText(phoneNumber.getText() + "-");
+        }
+        else if (phoneNumber.getText() == "044"){
+            phoneNumber.setText(phoneNumber.getText() + "-");
+        }
+        else if (phoneNumber.getText() == "033"){
+            phoneNumber.setText(phoneNumber.getText() + "-");
+        }
+        else if (phoneNumber.getText() == "043"){
+            phoneNumber.setText(phoneNumber.getText() + "-");
+        }
+        else if (phoneNumber.getText() == "041"){
+            phoneNumber.setText(phoneNumber.getText() + "-");
+        }
+        else if (phoneNumber.getText() == "063"){
+            phoneNumber.setText(phoneNumber.getText() + "-");
+        }
+        else if (phoneNumber.getText() == "061"){
+            phoneNumber.setText(phoneNumber.getText() + "-");
+        }
+        else if (phoneNumber.getText() == "054"){
+            phoneNumber.setText(phoneNumber.getText() + "-");
+        }
+        else if (phoneNumber.getText() == "055"){
+            phoneNumber.setText(phoneNumber.getText() + "-");
+        }
+        else if (phoneNumber.getText() == "064"){
+            phoneNumber.setText(phoneNumber.getText() + "-");
+        }
+        else if (phoneNumber.getText() == "010"){
+            phoneNumber.setText(phoneNumber.getText() + "-");
+        }
+        else if (phoneNumber.getText() == "070"){
+            phoneNumber.setText(phoneNumber.getText() + "-");
+        }
+    }
     public void addFilter(View v, TextView phoneNumber){
-        
+        //하이폰이나 숫자 맞추기
+        //숫자추가
+        if(v == viewOne){
+
+        }
+        else if (v == viewTwo){
+
+        }
+        else if (v == viewThree){
+
+        }
+        else if (v == viewFour){
+
+        }
+        else if (v == viewFive){
+
+        }
+        else if (v == viewSix){
+
+        }
+        else if (v == viewSeven){
+
+        }
+        else if (v == viewEight){
+
+        }
+        else if (v == viewNine){
+
+        }
+        else if (v == viewZero){
+
+        }
+        else if (v == viewStar){
+
+        }
+        else {
+
+        }
+
     }
 }
