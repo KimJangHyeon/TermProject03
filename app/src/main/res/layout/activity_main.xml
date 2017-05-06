@@ -92,7 +92,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:text="010-????-????"
+                    android:text="전화번호"
                     android:textColor="#ffffff"
                     android:layout_height="116dp"
                     android:textSize="50dp"

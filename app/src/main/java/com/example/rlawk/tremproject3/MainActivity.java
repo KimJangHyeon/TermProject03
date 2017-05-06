@@ -39,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
         addListenerOnButtonEight();
         addListenerOnButtonNine();
         addListenerOnButtonZero();
+        addListenerOnButtonHash();
+        addListenerOnButtonStar();
         add = (ImageButton) findViewById(R.id.btn_addPhoneNumber);
         phoneCall = (ImageButton) findViewById(R.id.btn_phoneCall);
-
-
         phoneNumber = (TextView) findViewById(R.id.text_phoneNumber);
 
     }
@@ -101,6 +101,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // 숫자 입력시 text에 추가
+    public void addListenerOnButtonHash(){
+        hash = (ImageButton) findViewById(R.id.btn_numberHash);
+        hash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                back_phoneNumber +="#";
+                phoneNumber.setText(toPhoneForm(back_phoneNumber));
+            }
+        });
+    }
+    public void addListenerOnButtonStar(){
+        star = (ImageButton) findViewById(R.id.btn_numberStar);
+        star.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                back_phoneNumber +="*";
+                phoneNumber.setText(toPhoneForm(back_phoneNumber));
+            }
+        });
+    }
     public void addListenerOnButtonOne(){
         one = (ImageButton) findViewById(R.id.btn_number1);
         one.setOnClickListener(new View.OnClickListener() {
@@ -216,11 +236,14 @@ public class MainActivity extends AppCompatActivity {
             if(back_phoneNumber.substring(0,2).equals("02")){
                 phoneArr[0] = back_phoneNumber.substring(0,2);
                 if (length==2){
-                    phoneArr[1] = null;
-                    phoneArr[2] = null;
+                    phoneArr[1] = "";
+                    phoneArr[2] = "";
                 }else if (length>2&&length<=6){
                     phoneArr[1] = back_phoneNumber.substring(2, length);
-                    phoneArr[2] = null;
+                    phoneArr[2] = "";
+                }else if (length>6&&length<=10){
+                    phoneArr[1] = back_phoneNumber.substring(2, length-4);
+                    phoneArr[2] = back_phoneNumber.substring(length-4, length);
                 }else{
                     phoneArr[1] = back_phoneNumber.substring(2, 6);
                     phoneArr[2] = back_phoneNumber.substring(6, length);
@@ -229,25 +252,29 @@ public class MainActivity extends AppCompatActivity {
                 //031, ....
                 phoneArr[0] = back_phoneNumber.substring(0,3);
                 if (length==3){
-                    phoneArr[1] = null;
-                    phoneArr[2] = null;
+                    phoneArr[1] = "";
+                    phoneArr[2] = "";
                 }else if (length>3&&length<=7){
                     phoneArr[1] = back_phoneNumber.substring(3, length);
-                    phoneArr[2] = null;
-                }else {
+                    phoneArr[2] = "";
+                }else if (length>7&&length<=11){
+                    phoneArr[1] = back_phoneNumber.substring(3, length-4);
+                    phoneArr[2] = back_phoneNumber.substring(length-4, length);
+                }
+                else {
                     phoneArr[1] = back_phoneNumber.substring(3, 7);
                     phoneArr[2] = back_phoneNumber.substring(7, length);
                 }
             }
         }
         //지역번호 없는 경우
-        else{
-            phoneArr[0] = null;
-            if(length<=4){
+        else {
+            phoneArr[0] = "";
+            if (length <= 4) {
                 phoneArr[1] = back_phoneNumber.substring(0);
-                phoneArr[2] = null;
-            }else{
-                phoneArr[1] = back_phoneNumber.substring(0,4);
+                phoneArr[2] = "";
+            } else {
+                phoneArr[1] = back_phoneNumber.substring(0, 4);
                 phoneArr[2] = back_phoneNumber.substring(4, length);
             }
         }
@@ -288,12 +315,8 @@ public class MainActivity extends AppCompatActivity {
         for(String i:toPhoneFormArr(back_phoneNumber)){
             toPhoneArr[count++] = i;
         }
-        Log.d("toPhoneArr0",toPhoneArr[0]);
-        Log.d("toPhoneArr1",toPhoneArr[1]);
-        Log.d("toPhoneArr2",toPhoneArr[2]);
 
         //지역번호 없는경우
-        Log.d("tag","enter");
         if(toPhoneArr[0].isEmpty()){
 
             if(toPhoneArr[2].isEmpty()){
