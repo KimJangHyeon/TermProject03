@@ -1,12 +1,10 @@
 package com.example.rlawk.tremproject3;
 
 import android.content.Intent;
-import android.os.Debug;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -17,18 +15,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton record, message, phoneList, add, phoneCall;
     private ImageButton one, two, three, four, zero, five, six, seven, eight, nine, hash, star;
     private TextView phoneNumber;
-    public View viewOne = findViewById(R.id.btn_number1);
-    public View viewTwo = findViewById(R.id.btn_number2);
-    public View viewThree = findViewById(R.id.btn_number3);
-    public View viewFour = findViewById(R.id.btn_number4);
-    public View viewFive = findViewById(R.id.btn_number5);
-    public View viewSix = findViewById(R.id.btn_number6);
-    public View viewSeven = findViewById(R.id.btn_number7);
-    public View viewEight = findViewById(R.id.btn_number8);
-    public View viewNine = findViewById(R.id.btn_number9);
-    public View viewZero = findViewById(R.id.btn_number0);
-    public View viewStar = findViewById(R.id.btn_numberStar);
-    public View viewHash = findViewById(R.id.btn_numberHash);
+
+    public String back_phoneNumber = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,9 +106,8 @@ public class MainActivity extends AppCompatActivity {
         one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //하이폰 입력
-                //1입력
-                //예외처리
+                back_phoneNumber +="1";
+                phoneNumber.setText(toPhoneForm(back_phoneNumber));
             }
         });
     }
@@ -129,6 +116,8 @@ public class MainActivity extends AppCompatActivity {
         two.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                back_phoneNumber +="2";
+                phoneNumber.setText(toPhoneForm(back_phoneNumber));
 
             }
         });
@@ -139,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                back_phoneNumber +="3";
+                phoneNumber.setText(toPhoneForm(back_phoneNumber));
             }
         });
     }
@@ -148,6 +139,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                back_phoneNumber +="4";
+                phoneNumber.setText(toPhoneForm(back_phoneNumber));
             }
         });
     }
@@ -157,6 +150,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                back_phoneNumber +="5";
+                phoneNumber.setText(toPhoneForm(back_phoneNumber));
             }
         });
     }
@@ -165,7 +160,8 @@ public class MainActivity extends AppCompatActivity {
         six.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                back_phoneNumber +="6";
+                phoneNumber.setText(toPhoneForm(back_phoneNumber));
             }
         });
     }
@@ -174,7 +170,8 @@ public class MainActivity extends AppCompatActivity {
         seven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                back_phoneNumber +="7";
+                phoneNumber.setText(toPhoneForm(back_phoneNumber));
             }
         });
     }
@@ -183,7 +180,8 @@ public class MainActivity extends AppCompatActivity {
         eight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                back_phoneNumber +="8";
+                phoneNumber.setText(toPhoneForm(back_phoneNumber));
             }
         });
     }
@@ -192,7 +190,8 @@ public class MainActivity extends AppCompatActivity {
         nine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                back_phoneNumber +="9";
+                phoneNumber.setText(toPhoneForm(back_phoneNumber));
             }
         });
     }
@@ -201,116 +200,123 @@ public class MainActivity extends AppCompatActivity {
         zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                back_phoneNumber +="0";
+                phoneNumber.setText(toPhoneForm(back_phoneNumber));
             }
         });
     }
-    public void makeFourFour(){
+    public String[] toPhoneFormArr(String back_phoneNumber){
+        String[] phoneArr = new String[3];
+        String temp = "";
+        int length = back_phoneNumber.toString().length();
+
+        //지역번호있는경우
+        if(localNumber(back_phoneNumber)){
+            //지역번호가 02 인 경우
+            if(back_phoneNumber.substring(0,2).equals("02")){
+                phoneArr[0] = back_phoneNumber.substring(0,2);
+                if (length==2){
+                    phoneArr[1] = null;
+                    phoneArr[2] = null;
+                }else if (length>2&&length<=6){
+                    phoneArr[1] = back_phoneNumber.substring(2, length);
+                    phoneArr[2] = null;
+                }else{
+                    phoneArr[1] = back_phoneNumber.substring(2, 6);
+                    phoneArr[2] = back_phoneNumber.substring(6, length);
+                }
+            }else{
+                //031, ....
+                phoneArr[0] = back_phoneNumber.substring(0,3);
+                if (length==3){
+                    phoneArr[1] = null;
+                    phoneArr[2] = null;
+                }else if (length>3&&length<=7){
+                    phoneArr[1] = back_phoneNumber.substring(3, length);
+                    phoneArr[2] = null;
+                }else {
+                    phoneArr[1] = back_phoneNumber.substring(3, 7);
+                    phoneArr[2] = back_phoneNumber.substring(7, length);
+                }
+            }
+        }
+        //지역번호 없는 경우
+        else{
+            phoneArr[0] = null;
+            if(length<=4){
+                phoneArr[1] = back_phoneNumber.substring(0);
+                phoneArr[2] = null;
+            }else{
+                phoneArr[1] = back_phoneNumber.substring(0,4);
+                phoneArr[2] = back_phoneNumber.substring(4, length);
+            }
+        }
+        return phoneArr;
+    }
+    public boolean localNumber(String back_phoneNumber){
+        boolean result = false;
+        int length = back_phoneNumber.length();
+        if(length==2){
+            if(back_phoneNumber.equals("02")) return true;
+        }
+        else if(length>2){
+            if(back_phoneNumber.substring(0,2).equals("02")) return true;
+            else if(back_phoneNumber.substring(0,3).equals("031")) return true;
+            else if(back_phoneNumber.substring(0,3).equals("032")) return true;
+            else if(back_phoneNumber.substring(0,3).equals("053")) return true;
+            else if(back_phoneNumber.substring(0,3).equals("051")) return true;
+            else if(back_phoneNumber.substring(0,3).equals("062")) return true;
+            else if(back_phoneNumber.substring(0,3).equals("042")) return true;
+            else if(back_phoneNumber.substring(0,3).equals("052")) return true;
+            else if(back_phoneNumber.substring(0,3).equals("044")) return true;
+            else if(back_phoneNumber.substring(0,3).equals("033")) return true;
+            else if(back_phoneNumber.substring(0,3).equals("043")) return true;
+            else if(back_phoneNumber.substring(0,3).equals("041")) return true;
+            else if(back_phoneNumber.substring(0,3).equals("063")) return true;
+            else if(back_phoneNumber.substring(0,3).equals("061")) return true;
+            else if(back_phoneNumber.substring(0,3).equals("054")) return true;
+            else if(back_phoneNumber.substring(0,3).equals("055")) return true;
+            else if(back_phoneNumber.substring(0,3).equals("064")) return true;
+            else if(back_phoneNumber.substring(0,3).equals("010")) return true;
+            else if(back_phoneNumber.substring(0,3).equals("070")) return true;
+        }
+        return result;
+    }
+    public String toPhoneForm(String back_phoneNumber){
+        String[] toPhoneArr = new String[3];
+        int count = 0;
+        for(String i:toPhoneFormArr(back_phoneNumber)){
+            toPhoneArr[count++] = i;
+        }
+        Log.d("toPhoneArr0",toPhoneArr[0]);
+        Log.d("toPhoneArr1",toPhoneArr[1]);
+        Log.d("toPhoneArr2",toPhoneArr[2]);
+
+        //지역번호 없는경우
+        Log.d("tag","enter");
+        if(toPhoneArr[0].isEmpty()){
+
+            if(toPhoneArr[2].isEmpty()){
+                return toPhoneArr[1];
+            }
+            else {
+                return toPhoneArr[1] + "-" + toPhoneArr[2];
+            }
+        }
+        //지역번호 있는경우
+        else{
+            if(toPhoneArr[2].isEmpty()&&toPhoneArr[1].isEmpty()){
+                return toPhoneArr[0];
+            }
+            else if (toPhoneArr[2].isEmpty()&&!toPhoneArr[1].isEmpty()){
+                return toPhoneArr[0] + "-" + toPhoneArr[1];
+            }
+            else{
+                return toPhoneArr[0]+"-"+toPhoneArr[1]+"-"+toPhoneArr[2];
+            }
+        }
+
 
     }
-    public void addSecondHyphen(TextView phoneNumber){
-        //지역번호가 없을 경우
-        //02 일경우&&phoneNumber이 6인 경우
-        //이외일 경우
-    }
-    public void addFirstHyphen(TextView phoneNumber){
-        if(phoneNumber.getText() == "02"){
-            phoneNumber.setText(phoneNumber.getText() + "-");
-        }
-        else if(phoneNumber.getText() == "031"){
-            phoneNumber.setText(phoneNumber.getText() + "-");
-        }
-        else if(phoneNumber.getText()=="032"){
-            phoneNumber.setText(phoneNumber.getText() + "-");
-        }
-        else if (phoneNumber.getText() == "051"){
-            phoneNumber.setText(phoneNumber.getText() + "-");
-        }
-        else if (phoneNumber.getText() == "053"){
-            phoneNumber.setText(phoneNumber.getText() + "-");
-        }
-        else if (phoneNumber.getText() == "062"){
-            phoneNumber.setText(phoneNumber.getText() + "-");
-        }
-        else if (phoneNumber.getText() == "042"){
-            phoneNumber.setText(phoneNumber.getText() + "-");
-        }
-        else if (phoneNumber.getText() == "052"){
-            phoneNumber.setText(phoneNumber.getText() + "-");
-        }
-        else if (phoneNumber.getText() == "044"){
-            phoneNumber.setText(phoneNumber.getText() + "-");
-        }
-        else if (phoneNumber.getText() == "033"){
-            phoneNumber.setText(phoneNumber.getText() + "-");
-        }
-        else if (phoneNumber.getText() == "043"){
-            phoneNumber.setText(phoneNumber.getText() + "-");
-        }
-        else if (phoneNumber.getText() == "041"){
-            phoneNumber.setText(phoneNumber.getText() + "-");
-        }
-        else if (phoneNumber.getText() == "063"){
-            phoneNumber.setText(phoneNumber.getText() + "-");
-        }
-        else if (phoneNumber.getText() == "061"){
-            phoneNumber.setText(phoneNumber.getText() + "-");
-        }
-        else if (phoneNumber.getText() == "054"){
-            phoneNumber.setText(phoneNumber.getText() + "-");
-        }
-        else if (phoneNumber.getText() == "055"){
-            phoneNumber.setText(phoneNumber.getText() + "-");
-        }
-        else if (phoneNumber.getText() == "064"){
-            phoneNumber.setText(phoneNumber.getText() + "-");
-        }
-        else if (phoneNumber.getText() == "010"){
-            phoneNumber.setText(phoneNumber.getText() + "-");
-        }
-        else if (phoneNumber.getText() == "070"){
-            phoneNumber.setText(phoneNumber.getText() + "-");
-        }
-    }
-    public void addFilter(View v, TextView phoneNumber){
-        //하이폰이나 숫자 맞추기
-        //숫자추가
-        if(v == viewOne){
 
-        }
-        else if (v == viewTwo){
-
-        }
-        else if (v == viewThree){
-
-        }
-        else if (v == viewFour){
-
-        }
-        else if (v == viewFive){
-
-        }
-        else if (v == viewSix){
-
-        }
-        else if (v == viewSeven){
-
-        }
-        else if (v == viewEight){
-
-        }
-        else if (v == viewNine){
-
-        }
-        else if (v == viewZero){
-
-        }
-        else if (v == viewStar){
-
-        }
-        else {
-
-        }
-
-    }
 }
