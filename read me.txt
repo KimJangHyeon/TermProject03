@@ -1,4 +1,5 @@
 <main>
+
 btn_phone_list - 전화번호록으로 이동
 btn_message - 메시지함으로 이동
 btn_record - 전화기록 페이지로 이동
@@ -10,8 +11,14 @@ btn_addPhoneNumber - 이 번호를 추가하는 페이지로 이동
 btn_number(n) - 입력시 text_phoneNumber에 숫자 n을 추가
 btn_numberHash - 입력시 text_phoneNumber에 #을 추가 
 btn_numberStar - 입력시 text_phoneNumber에 *을 추가
-btn_phoneCall
 
+btn_phoneCall - 미정
+btn_
+
+
+parameter{
+	back_phoneNumber = '-'없는 전화번호
+}
 
 <call list>
 btn_phone_list - 전화번호록으로 이동
@@ -35,6 +42,13 @@ btn_record - 전화기록 페이지로 이동
 btn_phone_list - 전화번호록으로 이동
 btn_message - 메시지함으로 이동
 btn_record - 전화기록 페이지로 이동
+
+<add person>
+btn_cancel-->call_list로 이동
+btn_ok-->call_list로 이동
+
+text_name
+text_phone
 
 
 <db>

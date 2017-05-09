@@ -1,5 +1,7 @@
 package com.example.rlawk.tremproject3;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,12 +17,14 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton record, message, phoneList, add, phoneCall;
     private ImageButton one, two, three, four, zero, five, six, seven, eight, nine, hash, star;
     private TextView phoneNumber;
-
+    public static Context mContext;
     public String back_phoneNumber = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mContext=this;
 
         addListenerOnButtonRecord();
         addListenerOnButtonMessage();
@@ -85,8 +89,10 @@ public class MainActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Add person의 번호로 phoneNumber
-                //add person으로 이동
+                Intent intent = new Intent(MainActivity.this, AddPerson.class);
+                intent.putExtra("phone number to add",back_phoneNumber);
+                startActivityForResult(intent, 1);
+                startActivity(intent);
             }
         });
     }

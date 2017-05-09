@@ -53,7 +53,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:srcCompat="@mipmap/ic_launcher"
+            app:srcCompat="@drawable/numberhash"
             android:id="@+id/img_person"
             android:layout_weight="1.37" />
     </LinearLayout>
@@ -100,14 +100,15 @@
                 android:layout_weight="0.09">
 
                 <EditText
+                    android:layout_width="260dp"
                     android:layout_height="match_parent"
-                    android:inputType="number"
+                    android:inputType="textPersonName"
+                    android:text="Name"
                     android:ems="10"
-                    android:id="@+id/editText"
-                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_width="260dp" />
+                    android:id="@+id/text" />
             </RelativeLayout>
         </LinearLayout>
 
@@ -150,7 +151,10 @@
                     android:layout_height="match_parent"
                     android:inputType="number"
                     android:ems="10"
-                    android:id="@+id/editText2" />
+                    android:id="@+id/text_phone"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
