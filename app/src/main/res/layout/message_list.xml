@@ -85,6 +85,10 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.99">
 
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ed_search" />
             </LinearLayout>
 
             <LinearLayout
@@ -93,12 +97,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.01">
 
-                <ImageButton
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@android:drawable/ic_search_category_default"
-                    android:background="#00ff0000"
-                    android:id="@+id/btn_search" />
             </LinearLayout>
         </LinearLayout>
 
@@ -112,7 +110,7 @@
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/text_content" />
+                android:id="@+id/list_message" />
 
         </LinearLayout>
 

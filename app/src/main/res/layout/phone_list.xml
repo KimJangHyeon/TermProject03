@@ -89,19 +89,12 @@
                 android:weightSum="1">
 
                 <AutoCompleteTextView
-                    android:text="search name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textColor="#ffffff"
                     android:id="@+id/searchView"
                     android:layout_weight="1" />
             </LinearLayout>
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@mipmap/ic_launcher"
-                android:id="@+id/imageButton4" />
 
         </LinearLayout>
 
