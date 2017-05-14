@@ -1,8 +1,10 @@
 package com.example.rlawk.tremproject3;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.telecom.Call;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,61 +12,107 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by rlawk on 2017-05-09.
  */
 
+/*
+* 파라미터: list<inOut, date, phone, icon>
+*           list 전화번호부
+*           */
+
 public class CallListAdapter extends BaseAdapter{
-    private ArrayList<CallListItem> callListItemsList = new ArrayList<CallListItem>();
 
-    public CallListAdapter(){
+    Context mContext;
+    LayoutInflater inflater;
 
+    //요기에 db에서 받아온 list넣을거@@
+    private List<CallListNode> callListNodeList = null;
+    private List<PhoneListNode> dbPhoneList = null;
+    public CallListAdapter(Context context, List<CallListNode> callListNodeList, List<PhoneListNode> dbPhoneList){
+        mContext = context;
+        this.callListNodeList = callListNodeList;
+        this.dbPhoneList = dbPhoneList;
+        inflater = LayoutInflater.from(mContext);
+    }
+    public class ViewHolder{
+        TextView name;
+        TextView phone;
+        TextView date;
+        ImageView inOut;
     }
 
     @Override
-    public int getCount(){
-        return callListItemsList.size();
-    }
+    public int getCount(){ return callListNodeList.size();}
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
-        final Context context = parent.getContext();
+    public CallListNode getItem(int position) { return callListNodeList.get(position);}
 
-        if(convertView == null){
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.call_list_item, parent, false);
+    @Override
+    public long getItemId(int position) {return position;}
+
+    public View getView(final int position, View view, ViewGroup parent){
+        final ViewHolder holder;
+        if(view == null) {
+            holder = new ViewHolder();
+            view = inflater.inflate(R.layout.call_list_item, null);
+            holder.name = (TextView) view.findViewById(R.id.text_name);
+            holder.date = (TextView) view.findViewById(R.id.text_date);
+            holder.phone = (TextView) view.findViewById(R.id.text_phone);
+            holder.inOut = (ImageView) view.findViewById(R.id.img_icon);
+            view.setTag(holder);
+        } else {
+            holder = (ViewHolder) view.getTag();
         }
+            //수신1, 발신-1, ?0
+        holder.date.setText(callListNodeList.get(position).getDate());
+        holder.phone.setText(callListNodeList.get(position).getPhone());
+        final String[] address = isInAddress(callListNodeList.get(position).getPhone());
+        if(address[0].equals("()@&$&*&")){
+            holder.name.setText("Unknown");
+        }else{
+            holder.name.setText(address[0]);
+        }
+        if(callListNodeList.get(position).getInOut() == 1){
+            holder.inOut.setImageResource(R.drawable.number1);
+        } else if (callListNodeList.get(position).getInOut() == 0 ){
+            holder.inOut.setImageResource(R.drawable.number0);
+        }else {
+            holder.inOut.setImageResource(R.drawable.number2);
+        }
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, CallListSingleItem.class);
+                intent.putExtra("NAME", address[0]);
+                intent.putExtra("DATE", callListNodeList.get(position).getDate());
+                Log.d("DATE", callListNodeList.get(position).getDate());
+                intent.putExtra("INOUT", callListNodeList.get(position).getInOut());
+                intent.putExtra("PHONE", callListNodeList.get(position).getPhone());
+                intent.putExtra("IMAGE", address[1]);
 
-        ImageView callIcon = (ImageView) convertView.findViewById(R.id.img_call);
-        TextView callName = (TextView) convertView.findViewById(R.id.text_name);
-        TextView callPhone = (TextView) convertView.findViewById(R.id.text_phone);
-
-        CallListItem callListItem = callListItemsList.get(position);
-        callIcon.setImageDrawable(callListItem.getIcon());
-        callName.setText(callListItem.getName());
-        callPhone.setText(callListItem.getPhone());
-
-        return convertView;
+                mContext.startActivity(intent);
+            }
+        });
+        return view;
+    }
+    public String[] isInAddress(String phone){
+        String[] result = new String[2];
+        for(PhoneListNode node:dbPhoneList){
+            if(node.getPhone().equals(phone)) {
+                result[0] = node.getName();
+                result[1] = node.getImage();
+                return result;
+            }
+        }
+        result[0] = "()@&$&*&";
+        result[1] = "()@&$&*&";
+        return result;
     }
 
-    @Override
-    public long getItemId(int position){
-        return position;
-    }
-
-    @Override
-    public Object getItem(int position){
-        return callListItemsList.get(position);
-    }
-    public void addItem(Drawable icon, String name, String phone){
-        CallListItem callListItem = new CallListItem();
-
-        callListItem.setIcon(icon);
-        callListItem.setName(name);
-        callListItem.setPhone(phone);
-
-        callListItemsList.add(callListItem);
-    }
 }

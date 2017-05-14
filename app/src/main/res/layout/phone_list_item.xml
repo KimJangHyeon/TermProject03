@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/phone_list_item"
+    android:layout_width="match_parent"
+    tools:context="com.example.rlawk.tremproject3.PhoneListItem"
+    android:layout_height="120dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="@color/line"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="112dp"
+            android:background="#ffffff"
+            android:layout_margin="1dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/numberhash"
+                android:id="@+id/img_icon" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="1"
+                android:layout_weight=".5">
+
+                <TextView
+                    android:text="NAME"
+                    android:gravity="center"
+                    android:layout_width="78dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:id="@+id/textView7"
+                    android:background="#ffffff" />
+
+                <TextView
+                    android:text="TextView"
+                    android:layout_width="193dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:id="@+id/text_name"
+                    android:background="#ffffff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".5">
+
+                <TextView
+                    android:text="PHONE"
+                    android:gravity="center"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView9"
+                    android:layout_margin="1dp"
+                    android:background="#ffffff"
+                    android:layout_weight="0.02"
+                    android:layout_width="75dp" />
+
+                <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/text_phone"
+                    android:layout_margin="1dp"
+                    android:background="#ffffff"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

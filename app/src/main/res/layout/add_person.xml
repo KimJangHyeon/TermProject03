@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    tools:context="com.example.rlawk.tremproject3.Add_person"
+    tools:context="com.example.rlawk.tremproject3.AddPerson"
     android:orientation="vertical"
     android:weightSum="1">
 
@@ -75,8 +75,7 @@
             <RelativeLayout android:layout_height="match_parent"
                 android:layout_width="120dp"
                 android:background="@color/bg"
-                android:layout_margin="1dp"
-                android:id="@+id/text_name">
+                android:layout_margin="1dp">
 
                 <TextView
                     android:text="NAME"
@@ -108,7 +107,7 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:id="@+id/text" />
+                    android:id="@+id/text_name" />
             </RelativeLayout>
         </LinearLayout>
 
@@ -124,8 +123,7 @@
             <RelativeLayout android:layout_height="match_parent"
                 android:layout_width="120dp"
                 android:layout_margin="1dp"
-                android:background="@color/bg"
-                android:id="@+id/text_phone">
+                android:background="@color/bg">
 
                 <TextView
                     android:text="PHONE"
@@ -149,12 +147,10 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:inputType="number"
+                    android:inputType="phone"
                     android:ems="10"
-                    android:id="@+id/text_phone"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:id="@+id/text_phone" />
+
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

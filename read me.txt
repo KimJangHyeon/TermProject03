@@ -20,12 +20,26 @@ parameter{
 	back_phoneNumber = '-'없는 전화번호
 }
 
+
+
 <call list>
+	받는 파라미터:
+		db의 inOut, date, phone
+	item:
+		inOut, date, name, phone
+
 btn_phone_list - 전화번호록으로 이동
 btn_message - 메시지함으로 이동
 btn_record - 전화기록 페이지로 이동
 
+
+
 <phone list>
+	받는 파라미터:
+		db의 image, name, phone
+	item
+		image, name, phone
+
 btn_phone_list - 전화번호록으로 이동
 btn_message - 메시지함으로 이동
 btn_record - 전화기록 페이지로 이동
@@ -38,10 +52,12 @@ btn_phone_list - 전화번호록으로 이동
 btn_message - 메시지함으로 이동
 btn_record - 전화기록 페이지로 이동
 
+
 <message per person>
 btn_phone_list - 전화번호록으로 이동
 btn_message - 메시지함으로 이동
 btn_record - 전화기록 페이지로 이동
+
 
 <add person>
 btn_cancel-->call_list로 이동
@@ -52,3 +68,12 @@ text_phone
 
 
 <db>
+table (ADDRESS, MESSAGEMENU, CHATLIST, CALLLIST)
+
+address(name, phone, image)
+MESSAGEMENU(date, phone, icon) *entry를 추가하려면 그 entry와 같은 번호를 가진 entry는 제거 후에 추가*
+CALLLIST(inout, date, phone) 
+
+<db operator>
+대부분의 db에서 부르거나 넣는 작업을 해줌
+

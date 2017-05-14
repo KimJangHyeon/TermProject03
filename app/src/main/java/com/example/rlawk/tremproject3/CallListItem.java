@@ -9,26 +9,37 @@ import android.graphics.drawable.Drawable;
 
 public class CallListItem {
     private Drawable icon;
-    private String name;
     private String phone;
+    private String date;
+    private int inOut;
 
+    public CallListItem(Drawable icon, String phone, String date, int inOut){
+        this.phone = phone;
+        this.icon = icon;
+        this.date = date;
+        this.inOut = inOut;
+    }
     public void setIcon(Drawable icon){
         this.icon = icon;
     }
-    public void setName(String name){
-        this.name = name;
+    public void setDate(String date){
+        this.date = date;
     }
     public void setPhone(String phone){
         this.phone = phone;
+    }
+    public void setInOut(int inOut){
+        this.inOut = inOut;
     }
 
     public Drawable getIcon(){
         return this.icon;
     }
-    public String getName(){
-        return this.name;
+    public String getDate(){
+        return this.date;
     }
     public String getPhone(){
         return this.phone;
     }
+    public int getInOut(){ return this.inOut; }
 }

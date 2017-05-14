@@ -19,7 +19,10 @@
         <activity android:name=".MessageList" />
         <activity android:name=".MessagePerPerson" />
         <activity android:name=".PhoneList" />
-        <activity android:name=".AddPerson"></activity>
+        <activity android:name=".AddPerson" />
+        <activity android:name=".CallListSingleItem" />
+        <activity android:name=".MessageItem" />
+        <activity android:name=".PhoneListItem"></activity>
     </application>
 
 </manifest>

@@ -90,7 +90,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddPerson.class);
-                intent.putExtra("phone number to add",back_phoneNumber);
+                intent.putExtra("PHONE",toPhoneForm(back_phoneNumber));
+                intent.putExtra("FROM", "MainActivity");
                 startActivityForResult(intent, 1);
                 startActivity(intent);
             }
