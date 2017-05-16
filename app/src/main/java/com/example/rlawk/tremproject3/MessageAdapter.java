@@ -82,8 +82,14 @@ public class MessageAdapter extends BaseAdapter{
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                IntoPhoneFilter filter = new IntoPhoneFilter();
                 Intent intent = new Intent(mContext, MessagePerPerson.class);
                 intent.putExtra("PHONE", messageNodeList.get(position).getPhone());
+                String[] nameOrPhone = nameOrPhone(messageNodeList.get(position).getPhone());
+                String name = "";
+                name = nameOrPhone[0];
+                if(name.equals(messageNodeList.get(position).getPhone())) name = "Unknown";
+                intent.putExtra("NAME", name);
                 mContext.startActivity(intent);
             }
         });
