@@ -26,6 +26,8 @@ public class MessageList extends AppCompatActivity {
     private String[] dateArr;
     private String[] phoneArr;
     private String[] contentArr;
+    private boolean[] inOutArr;
+
 
     private String[] p_phoneArr;
     private String[] p_nameArr;
@@ -42,6 +44,7 @@ public class MessageList extends AppCompatActivity {
         addListenerOnButtonRecord();
 
         //test
+        inOutArr = new boolean[] {false, false, true, true, false, true};
         dateArr = new String[] {"MM월dd일hh시mm분", "MM월dd일hh시mm분", "MM월dd일hh시mm분", "MM월dd일hh시mm분", "MM월dd일hh시mm분", "MM월dd일hh시mm분"};
         phoneArr = new String[] {"010-9788-4541", "010-9788-4534", "010-9788-4546", "010-9588-4544", "010-9288-4544", "010-2788-4544"};
         contentArr = new String[] {"안녕하세요", "안녕", "메롱", "하핳하하", "ㅋㅋㅋㅋ", "재댜ㅓㄹ"};
@@ -50,7 +53,7 @@ public class MessageList extends AppCompatActivity {
         p_imageArr = new String[] {"man", "woman"};
 
         for(int i = 0;i< dateArr.length;i++){
-            MessageNode mn = new MessageNode(dateArr[i], phoneArr[i], contentArr[i]);
+            MessageNode mn = new MessageNode(inOutArr[i], dateArr[i], phoneArr[i], contentArr[i]);
             msgArrayList.add(mn);
         }
         for(int i = 0;i<p_nameArr.length;i++){

@@ -9,8 +9,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,9 +22,13 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton one, two, three, four, zero, five, six, seven, eight, nine, hash, star;
     private TextView phoneNumber;
     public static Context mContext;
+    private DBOperator dbOperator;
     public String back_phoneNumber = "";
+    private String date = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dbOperator = new DBOperator(getApplicationContext());
+        final SQLiteManager manager = new SQLiteManager(getApplicationContext(), "ADDRESSBOOK.db", null, 1);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -102,7 +110,12 @@ public class MainActivity extends AppCompatActivity {
         phoneCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                long now = System.currentTimeMillis();
+                Date _date = new Date(now);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초");
+                date = simpleDateFormat.format(_date);
+                dbOperator.insertCallList(-1, date, phoneNumber.getText().toString());
+                Toast.makeText(getApplicationContext(), "발신이 완료되었습니다.", Toast.LENGTH_LONG).show();
             }
         });
     }

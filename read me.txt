@@ -23,10 +23,11 @@ parameter{
 
 
 <call list>
+	//수신1, 발신-1, ?0
 	받는 파라미터:
-		db의 inOut, date, phone
+		db의 inOut, date, phone, icon
 	item:
-		inOut, date, name, phone
+		inOut, date, name, phone, icon
 
 btn_phone_list - 전화번호록으로 이동
 btn_message - 메시지함으로 이동
@@ -48,6 +49,8 @@ btn_record - 전화기록 페이지로 이동
 btn_prev -있을지 없을지
 
 <message list>
+true: 내가 보낸것
+false: 받은것
 btn_phone_list - 전화번호록으로 이동
 btn_message - 메시지함으로 이동
 btn_record - 전화기록 페이지로 이동
@@ -77,3 +80,20 @@ CALLLIST(inout, date, phone)
 <db operator>
 대부분의 db에서 부르거나 넣는 작업을 해줌
 
+
+
+
+
+
+  intent.putExtra("NAME", address[0]);
+                intent.putExtra("DATE", callListNodeList.get(position).getDate());
+                intent.putExtra("INOUT", callListNodeList.get(position).getInOut());
+                intent.putExtra("PHONE", callListNodeList.get(position).getPhone());
+                intent.putExtra("IMAGE", address[1]);
+
+
+
+ private int inOut;
+    private String date;
+    private String phone;
+    private String image;

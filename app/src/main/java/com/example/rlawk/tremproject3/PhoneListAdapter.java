@@ -2,6 +2,7 @@ package com.example.rlawk.tremproject3;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,12 +23,14 @@ public class PhoneListAdapter extends BaseAdapter{
     LayoutInflater inflater;
     private List<PhoneListNode> phoneListNodeList = null;
     private ArrayList<PhoneListNode> arraylist;
+    DBOperator dbOperator;
 
     //DBOperator로부터 받는 파라미터
 
     public PhoneListAdapter(Context context, List<PhoneListNode> phoneListNodeList) {
         mContext = context;
         this.phoneListNodeList = phoneListNodeList;
+        dbOperator = new DBOperator(mContext);
         inflater = LayoutInflater.from(mContext);
         this.arraylist = new ArrayList<PhoneListNode>();
         this.arraylist.addAll(phoneListNodeList);
@@ -91,17 +94,34 @@ public class PhoneListAdapter extends BaseAdapter{
                 mContext.startActivity(intent);
             }
         });
+        view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                dbOperator.deletePhoneList("ADDRESSBOOK", phoneListNodeList.get(position).getPhone().toString());
+                Log.e(phoneListNodeList.size()+"", "onLongClick: ");
+                phoneListNodeList.clear();
+                Log.e(phoneListNodeList.size()+"", "onLongClick: ");
+                phoneListNodeList.addAll(dbOperator.getResultPhoneList("ADDRESSBOOK"));
+                Log.e(phoneListNodeList.size()+"", "onLongClick: ");
+                notifyDataSetChanged();
+                return true;
+            }
+        });
         return view;
     }
 
     public void filter(String charText){
         charText = charText.toLowerCase(Locale.getDefault());
         phoneListNodeList.clear();
+        if(arraylist.size()==0) arraylist.addAll(dbOperator.getResultPhoneList("ADDRESSBOOK"));
         if(charText.length() == 0){
+            Log.d("arrayList", "0");
             phoneListNodeList.addAll(arraylist);
         }else{
             for(PhoneListNode node: arraylist){
+                Log.d("ADD", "node");
                 if(node.getName().toLowerCase(Locale.getDefault()).contains(charText)) {
+
                     phoneListNodeList.add(node);
                 }
             }

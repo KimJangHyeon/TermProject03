@@ -18,16 +18,15 @@ public class CallList extends AppCompatActivity {
     private ListView callList;
     private ArrayList<CallListNode> arrListCall = new ArrayList<CallListNode>();
     private ArrayList<PhoneListNode> arrListPhone = new ArrayList<PhoneListNode>();
-
+    private DBOperator dbOperator;
     //test
-    private int[] inOutArr;
-    private String[] dateArr;
-    private String[] phoneArr;
-    private String[] imageArr;
+    //private int[] inOutArr;
+    //private String[] dateArr;
+    //private String[] phoneArr;
 
-    private String[] p_nameArr;
-    private String[] p_phoneArr;
-    private String[] p_imageArr;
+    //private String[] p_nameArr;
+    //private String[] p_phoneArr;
+    //private String[] p_imageArr;
     //private SQLiteManager addressDB;
 
     @Override
@@ -38,26 +37,30 @@ public class CallList extends AppCompatActivity {
         addListenerOnButtonDial();
         addListenerOnButtonPhoneList();
         addListenerOnButtonMessage();
+        dbOperator = new DBOperator(getApplicationContext());
+
+        arrListCall.addAll(dbOperator.getResultCallList());
+        arrListPhone.addAll(dbOperator.getResultPhoneList("ADDRESSBOOK"));
 
         callList = (ListView) findViewById(R.id.list_callList);
 
         //test
-        inOutArr = new int[]{1, 0, -1, 1, 0, -1};
-        dateArr = new String[] {"MM월dd일hh시mm분", "MM월dd일hh시mm분", "MM월dd일hh시mm분", "MM월dd일hh시mm분", "MM월dd일hh시mm분", "MM월dd일hh시mm분"};
-        phoneArr = new String[] {"010-9788-4541", "010-9788-4534", "010-9788-4546", "010-9588-4544", "010-9288-4544", "010-2788-4544"};
+        //inOutArr = new int[]{1, 0, -1, 1, 0, -1};
+        //dateArr = new String[] {"MM월dd일hh시mm분", "MM월dd일hh시mm분", "MM월dd일hh시mm분", "MM월dd일hh시mm분", "MM월dd일hh시mm분", "MM월dd일hh시mm분"};
+        //phoneArr = new String[] {"010-9788-4541", "010-9788-4534", "010-9788-4546", "010-9588-4544", "010-9288-4544", "010-2788-4544"};
 
-        p_phoneArr = new String[] {"010-9788-4541", "010-9788-4534"};
-        p_nameArr = new String[] {"kim", "Park"};
-        p_imageArr = new String[] {"man", "woman"};
+        //p_phoneArr = new String[] {"010-9788-4541", "010-9788-4534"};
+        //p_nameArr = new String[] {"kim", "Park"};
+        //p_imageArr = new String[] {"man", "woman"};
 
-        for(int i = 0;i< dateArr.length;i++){
-            CallListNode node = new CallListNode(inOutArr[i], dateArr[i], phoneArr[i]);
-            arrListCall.add(node);
-        }
-        for(int i = 0;i<p_nameArr.length;i++){
-            PhoneListNode node = new PhoneListNode(p_nameArr[i], p_phoneArr[i], p_imageArr[i]);
-            arrListPhone.add(node);
-        }
+        //for(int i = 0;i< dateArr.length;i++){
+        //    CallListNode node = new CallListNode(inOutArr[i], dateArr[i], phoneArr[i]);
+        //    arrListCall.add(node);
+        //}
+        //for(int i = 0;i<p_nameArr.length;i++){
+        //    PhoneListNode node = new PhoneListNode(p_nameArr[i], p_phoneArr[i], p_imageArr[i]);
+        //    arrListPhone.add(node);
+        //}
         //_________________________________________________________________________________________________________________
         adapter = new CallListAdapter(this, arrListCall, arrListPhone);
         callList.setAdapter(adapter);

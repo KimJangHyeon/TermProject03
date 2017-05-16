@@ -23,7 +23,7 @@ public class PhoneList extends AppCompatActivity {
     private ListView listView;
     private PhoneListAdapter adapter;
     private EditText searchView;
-
+    private DBOperator dbOperator;
     //test
     String[] name;
     String[] phone;
@@ -37,6 +37,7 @@ public class PhoneList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dbOperator = new DBOperator(this);
         setContentView(R.layout.phone_list);
 
         addListenerOnButtonMessage();
@@ -44,18 +45,11 @@ public class PhoneList extends AppCompatActivity {
         addListenerOnButtonRecord();
 
         arrayList = new ArrayList<PhoneListNode>();
-        //operator = new DBOperator();
         listView = (ListView)findViewById(R.id.listView);
 
-        //test
-        name = new String[] {"kjh", "ifj", "wpj", "iwu", "qpi", "iue"};
-        phone = new String[] {"010-3233-2221","010-3233-2222","010-3233-2223","010-3233-2224","010-3233-2225","010-3233-2226"};
-        image = new String[] {"man", "woman", "else", "man", "woman", "else"};
-        for(int i = 0;i<name.length;i++){
-            PhoneListNode pn = new PhoneListNode(name[i], phone[i], image[i]);
-            arrayList.add(pn);
-        }
         adapter = new PhoneListAdapter(this, arrayList);
+        arrayList.addAll(dbOperator.getResultPhoneList("ADDRESSBOOK"));
+
         listView.setAdapter(adapter);
 
         searchView = (EditText) findViewById(R.id.searchView);
@@ -80,6 +74,12 @@ public class PhoneList extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //왜 여기서 안되지;;
+        adapter.notifyDataSetChanged();
+    }
 
     public void addListenerOnButtonRecord(){
         record = (ImageButton) findViewById(R.id.btn_record);
