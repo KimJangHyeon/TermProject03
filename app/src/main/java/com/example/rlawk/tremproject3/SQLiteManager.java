@@ -21,9 +21,9 @@ public class SQLiteManager extends SQLiteOpenHelper{
     @Override
    public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE ADDRESSBOOK (_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, phone TEXT, icon TEXT);");
-        db.execSQL("CREATE TABLE MESSAGEMAIN (_id INTEGER PRIMARY KEY AUTOINCREMENT, inOut TEXT, phone TEXT, content TEXT, date TEXT);");
-        db.execSQL("CREATE TABLE MESSAGEALL (_id INTEGER PRIMARY KEY AUTOINCREMENT, inOut TEXT, phone TEXT, content TEXT, date TEXT);");
-        db.execSQL("CREATE TABLE CALLLIST (_id INTEGER PRIMARY KEY AUTOINCREMENT, inOut TEXT, phone TEXT, date TEXT);");
+        db.execSQL("CREATE TABLE MESSAGEMAIN (_id INTEGER PRIMARY KEY AUTOINCREMENT, inOut INTEGER, phone TEXT, content TEXT, date TEXT);");
+        db.execSQL("CREATE TABLE MESSAGEALL (_id INTEGER PRIMARY KEY AUTOINCREMENT, inOut INTEGER, phone TEXT, content TEXT, date TEXT);");
+        db.execSQL("CREATE TABLE CALLLIST (_id INTEGER PRIMARY KEY AUTOINCREMENT, inOut INTEGER, date TEXT, phone TEXT);");
     }
 
     @Override
@@ -32,7 +32,7 @@ public class SQLiteManager extends SQLiteOpenHelper{
     }
 
     //case of table == MESSAGEMAIN, MESSAGEALL
-    public void INSERT(String table, boolean inOut, String phone, String content, String date){
+    public void INSERT(String table, int inOut, String phone, String content, String date){
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("INSERT INTO " + table + " VALUES(null, "+inOut+", '"+phone+"', '"+content+"', '"+date+"');");
         db.close();
@@ -60,19 +60,25 @@ public class SQLiteManager extends SQLiteOpenHelper{
     }
     public void DELETEBYPHONE(String table, String phone){
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("DELETE "+table+" WHERE phone = '" + phone + "';");
+        db.execSQL("DELETE FROM "+table+" WHERE phone = '" + phone + "';");
     }
     //case of all
     public void DELETE(String table, String phone){
         SQLiteDatabase db = getWritableDatabase();
-        if(table.equals("ADDRESSBOOK")) {
-            db.execSQL("DELETE FROM " + table + " WHERE phone = '" + phone + "';");
+        if(table.equals("CALLLIST")) {
+            db.execSQL("DELETE FROM '" + table + "' WHERE phone = '" + phone + "';");
             db.close();
-        } else {
-            db.execSQL("DELETE FROM " + table + " WHERE date = '" + phone + "';");
+        }else{
+            db.execSQL("DELETE FROM " + table + " WHERE phone = '" + phone + "';");
             db.close();
         }
     }
+    public void DELETE(String date){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DELETE FROM MESSAGEALL WHERE date = '"+date+"';");
+        db.close();
+    }
+
 
     public List<PhoneListNode> getResultPhoneList(String table){
         SQLiteDatabase db = getReadableDatabase();
@@ -96,5 +102,18 @@ public class SQLiteManager extends SQLiteOpenHelper{
             result.add(node);
         }
         return result;
+    }
+
+    public List<MessageNode> getResultMessageMainList(){
+        SQLiteDatabase db = getReadableDatabase();
+        List<MessageNode> result = new ArrayList<MessageNode>();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM MESSAGEMAIN", null);
+        while(cursor.moveToNext()){
+            MessageNode node = new MessageNode(cursor.getInt(1), cursor.getString(4), cursor.getString(2), cursor.getString(3));
+            result.add(node);
+        }
+        return result;
+
     }
 }

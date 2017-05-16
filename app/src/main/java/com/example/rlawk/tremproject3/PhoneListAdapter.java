@@ -98,11 +98,8 @@ public class PhoneListAdapter extends BaseAdapter{
             @Override
             public boolean onLongClick(View v) {
                 dbOperator.deletePhoneList("ADDRESSBOOK", phoneListNodeList.get(position).getPhone().toString());
-                Log.e(phoneListNodeList.size()+"", "onLongClick: ");
                 phoneListNodeList.clear();
-                Log.e(phoneListNodeList.size()+"", "onLongClick: ");
                 phoneListNodeList.addAll(dbOperator.getResultPhoneList("ADDRESSBOOK"));
-                Log.e(phoneListNodeList.size()+"", "onLongClick: ");
                 notifyDataSetChanged();
                 return true;
             }

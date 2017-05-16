@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/send_message"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/line"
+    tools:context="com.example.rlawk.tremproject3.SendMessage">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg"
+        android:layout_margin="1dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:background="@color/line"
+                android:layout_height="51dp">
+
+                <TextView
+                    android:text="PHONE"
+                    android:background="@color/bg"
+                    android:layout_margin="2dp"
+                    android:layout_width="87dp"
+                    android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView6" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:background="@color/bg"
+                    android:layout_margin="2dp"
+                    android:layout_height="match_parent"
+                    android:inputType="phone"
+                    android:ems="10"
+                    android:id="@+id/ed_phone"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <AutoCompleteTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ed_content"
+                android:layout_weight="0.89" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:drawable/ic_menu_send"
+                android:id="@+id/btn_send" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -114,5 +114,12 @@
 
         </LinearLayout>
 
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/ic_launcher"
+            android:id="@+id/btn_send"
+            android:layout_weight="0.03" />
+
     </LinearLayout>
 </RelativeLayout>

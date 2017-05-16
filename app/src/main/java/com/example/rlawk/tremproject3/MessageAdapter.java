@@ -28,15 +28,16 @@ public class MessageAdapter extends BaseAdapter{
     LayoutInflater inflater;
     private List<MessageNode> messageNodeList = null;
     private ArrayList<MessageNode> messageArrayList;
-    private List<PhoneListNode> dbPhoneList = null;
+    private List<PhoneListNode> dbPhoneList = new ArrayList<PhoneListNode>();
 
-    public MessageAdapter(Context context, List<MessageNode> messageNodeList, List<PhoneListNode> dbPhoneList){
+    public MessageAdapter(Context context, List<MessageNode> messageNodeList, ArrayList<PhoneListNode> dbPhoneList){
         mContext = context;
         this.messageNodeList = messageNodeList;
         inflater = LayoutInflater.from(mContext);
-        this.dbPhoneList = dbPhoneList;
+        this.dbPhoneList.addAll(dbPhoneList);
         this.messageArrayList = new ArrayList<MessageNode>();
         this.messageArrayList.addAll(messageNodeList);
+
     }
     public class ViewHolder{
         TextView name;
@@ -53,6 +54,7 @@ public class MessageAdapter extends BaseAdapter{
     public long getItemId(int position) { return position;}
 
     public View getView(final int position, View view, ViewGroup parent){
+        final DBOperator dbOperator = new DBOperator(mContext);
         final ViewHolder holder;
         if(view == null){
             holder = new ViewHolder();
@@ -85,6 +87,16 @@ public class MessageAdapter extends BaseAdapter{
                 mContext.startActivity(intent);
             }
         });
+        view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                dbOperator.deleteMessageMainList(messageNodeList.get(position).getPhone());
+                messageNodeList.clear();
+                messageNodeList.addAll(dbOperator.getResultMessageList());
+                notifyDataSetChanged();
+                return true;
+            }
+        });
         return view;
     }
     String[] nameOrPhone(String phone){
@@ -103,10 +115,8 @@ public class MessageAdapter extends BaseAdapter{
 
     public void filter(String charText){
         charText = charText.toLowerCase(Locale.getDefault());
-        Log.d("FILTER", "ENTER");
         messageNodeList.clear();
         if(charText.length() == 0){
-            Log.d("START", "length == 0");
             messageNodeList.addAll(messageArrayList);
         }else{
             for(MessageNode node:messageArrayList){

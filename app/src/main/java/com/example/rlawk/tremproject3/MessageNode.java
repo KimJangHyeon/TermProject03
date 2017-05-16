@@ -5,12 +5,12 @@ package com.example.rlawk.tremproject3;
  */
 
 public class MessageNode {
-    private boolean inOut;
+    private int inOut;
     private String content;
     private String date;
     private String phone;
 
-    public MessageNode(boolean inOut, String date, String phone, String content){
+    public MessageNode(int inOut, String date, String phone, String content){
         this.inOut = inOut;
         this.date = date;
         this.phone = phone;
@@ -20,7 +20,7 @@ public class MessageNode {
     public String getPhone(){return phone;}
     public String getDate(){return date;}
     public String getContent(){return content;}
-    public boolean getInOut(){return inOut;}
+    public int getInOut(){return inOut;}
 
     public void setPhone(String phone){
         this.phone = phone;
@@ -31,5 +31,5 @@ public class MessageNode {
     public void setContent(String content){
         this.content = content;
     }
-    public void setInOut(boolean inOut){ this.inOut = inOut;}
+    public void setInOut(int inOut){ this.inOut = inOut;}
 }

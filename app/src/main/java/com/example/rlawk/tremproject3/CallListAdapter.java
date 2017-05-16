@@ -30,6 +30,7 @@ public class CallListAdapter extends BaseAdapter{
 
     Context mContext;
     LayoutInflater inflater;
+    private DBOperator dbOperator;
 
     //요기에 db에서 받아온 list넣을거@@
     private List<CallListNode> callListNodeList = null;
@@ -97,6 +98,26 @@ public class CallListAdapter extends BaseAdapter{
                 intent.putExtra("IMAGE", address[1]);
 
                 mContext.startActivity(intent);
+            }
+        });
+        view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Log.d("DATE:", callListNodeList.get(position).getDate().toString());
+
+                //??error
+                dbOperator = new DBOperator(mContext);
+
+                Log.d("size", callListNodeList.size()+"");
+                dbOperator.deleteCallList(callListNodeList.get(position).getDate().toString());
+                //=-------------delete가 안됨----------------------
+                //dbOperator.deleteCallList(position);
+                callListNodeList.clear();
+                Log.d("size", callListNodeList.size()+"");
+                callListNodeList.addAll(dbOperator.getResultCallList());
+                Log.d("size", callListNodeList.size()+"");
+                notifyDataSetChanged();
+                return true;
             }
         });
         return view;
