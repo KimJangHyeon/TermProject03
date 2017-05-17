@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.R.drawable;
 
 import org.w3c.dom.Text;
 
@@ -80,11 +81,11 @@ public class CallListAdapter extends BaseAdapter{
             holder.name.setText(address[0]);
         }
         if(callListNodeList.get(position).getInOut() == 1){
-            holder.inOut.setImageResource(R.drawable.number1);
+            holder.inOut.setImageResource(drawable.sym_call_outgoing);
         } else if (callListNodeList.get(position).getInOut() == 0 ){
-            holder.inOut.setImageResource(R.drawable.number0);
+            holder.inOut.setImageResource(drawable.sym_call_missed);
         }else {
-            holder.inOut.setImageResource(R.drawable.number2);
+            holder.inOut.setImageResource(drawable.sym_call_outgoing);
         }
         view.setOnClickListener(new View.OnClickListener() {
             @Override

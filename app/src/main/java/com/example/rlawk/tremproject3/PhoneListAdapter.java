@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
+import android.R.drawable;
 /**
  * Created by rlawk on 2017-05-11.
  */
@@ -76,11 +76,11 @@ public class PhoneListAdapter extends BaseAdapter{
         holder.phone.setText(phoneListNodeList.get(position).getPhone());
         //icon의 종류에 따른 icon
         if (phoneListNodeList.get(position).getImage().equals("man")) {
-            holder.icon.setImageResource(R.drawable.number0);
+            holder.icon.setImageResource(R.drawable.user_help);
         }else if (phoneListNodeList.get(position).getImage().equals("woman")){
             holder.icon.setImageResource(R.drawable.number1);
         }else{
-            holder.icon.setImageResource(R.drawable.number2);
+            holder.icon.setImageResource(R.drawable.user_help);
         }
 
         view.setOnClickListener(new View.OnClickListener() {

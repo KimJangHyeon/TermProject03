@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,7 +41,7 @@ public class DBOperator {
         manager.DELETE("CALLLIST", date);
     }
     public void insertMessageMainList(int inOut, String phone, String content, String date){
-        manager.DELETEBYPHONE("MESSAGEMAIN", "phone");
+        manager.DELETEBYPHONE("MESSAGEMAIN", phone);
         manager.INSERT("MESSAGEMAIN", inOut, phone, content, date);
     }
     public void insertMessageAllList(int inOut, String phone, String content, String date){
@@ -51,5 +53,22 @@ public class DBOperator {
     public void deleteMessageMainList(String phone){
         manager.DELETE("MESSAGEMAIN", phone);
         manager.DELETE("MESSAGEALL", phone);
+    }
+
+    public void deleteMessageChatList(String phone, String date, List<MessageNode> list){
+        ArrayList<MessageNode> arrayList = new ArrayList<>();
+        manager.DELETECHAT(date, phone);
+        arrayList.addAll(manager.getResultMessageSomeList(phone));
+        manager.DELETE("MESSAGEMAIN", phone);
+
+        if(arrayList.size()!=0){
+            MessageNode node = arrayList.get(arrayList.size()-1);
+            insertMessageMainList(node.getInOut(), node.getPhone(), node.getContent(), node.getDate());
+        }
+
+    }
+
+    public List<MessageNode> getResultMessageSomeList(String phone){
+        return manager.getResultMessageSomeList(phone);
     }
 }

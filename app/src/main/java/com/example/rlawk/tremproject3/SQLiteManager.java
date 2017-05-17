@@ -73,7 +73,7 @@ public class SQLiteManager extends SQLiteOpenHelper{
             db.close();
         }
     }
-    public void DELETE(String date){
+    public void DELETECHAT(String date, String phone){
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("DELETE FROM MESSAGEALL WHERE date = '"+date+"';");
         db.close();
@@ -115,5 +115,17 @@ public class SQLiteManager extends SQLiteOpenHelper{
         }
         return result;
 
+    }
+
+    public List<MessageNode> getResultMessageSomeList(String phone){
+        SQLiteDatabase db = getReadableDatabase();
+        List<MessageNode> result = new ArrayList<MessageNode>();
+
+        Cursor cursor= db.rawQuery("SELECT * From MESSAGEALL Where phone = '"+phone+"'",null);
+        while(cursor.moveToNext()){
+            MessageNode node = new MessageNode(cursor.getInt(1), cursor.getString(4), cursor.getString(2), cursor.getString(3));
+            result.add(node);
+        }
+        return result;
     }
 }
