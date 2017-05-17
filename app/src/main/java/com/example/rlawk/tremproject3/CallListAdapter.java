@@ -85,7 +85,7 @@ public class CallListAdapter extends BaseAdapter{
         } else if (callListNodeList.get(position).getInOut() == 0 ){
             holder.inOut.setImageResource(drawable.sym_call_missed);
         }else {
-            holder.inOut.setImageResource(drawable.sym_call_outgoing);
+            holder.inOut.setImageResource(drawable.sym_call_incoming);
         }
         view.setOnClickListener(new View.OnClickListener() {
             @Override

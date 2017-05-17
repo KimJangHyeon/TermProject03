@@ -39,6 +39,7 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:background="@color/bg"
+                    android:textColor="#ffffff"
                     android:layout_margin="2dp"
                     android:layout_height="match_parent"
                     android:inputType="phone"
@@ -56,6 +57,7 @@
 
             <AutoCompleteTextView
                 android:layout_width="wrap_content"
+                android:textColor="#ffffff"
                 android:layout_height="wrap_content"
                 android:id="@+id/ed_content"
                 android:layout_weight="0.89" />

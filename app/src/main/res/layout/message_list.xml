@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    tools:context="com.example.rlawk.tremproject3.messageList">
+    tools:context="com.example.rlawk.tremproject3.MessageList">
 
     <LinearLayout
         android:orientation="vertical"
@@ -88,6 +88,7 @@
                 <AutoCompleteTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
                     android:id="@+id/ed_search" />
             </LinearLayout>
 
@@ -110,16 +111,21 @@
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginRight = "16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/line"
                 android:id="@+id/list_message" />
 
         </LinearLayout>
 
         <ImageButton
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/ic_launcher"
-            android:id="@+id/btn_send"
-            android:layout_weight="0.03" />
+            android:layout_height="61dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/mail1"
+            android:id="@+id/btn_send" />
 
     </LinearLayout>
 </RelativeLayout>

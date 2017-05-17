@@ -40,7 +40,7 @@ public class SQLiteManager extends SQLiteOpenHelper{
 
     public void INSERT(String table, int inOut, String phone, String date){
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("INSERT INTO " + table + " VALUES(null, "+inOut+", '"+phone+"', '"+date+"');");
+        db.execSQL("INSERT INTO " + table + " VALUES(null, "+inOut+", '"+date+"', '"+phone+"');");
         db.close();
     }
 

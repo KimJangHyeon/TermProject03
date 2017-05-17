@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.R.drawable;
 public class CallListSingleItem extends AppCompatActivity {
     private String name;
     private String phone;
@@ -47,11 +47,11 @@ public class CallListSingleItem extends AppCompatActivity {
         txt_phone.setText(phone);
 
         if(image.toString().equals("man")){
-            img_image.setImageResource(R.drawable.number0);
+            img_image.setImageResource(R.drawable.select_help);
         } else if(image.toString().equals("woman")){
             img_image.setImageResource(R.drawable.number1);
         }else{
-            img_image.setImageResource(R.drawable.number2);
+            img_image.setImageResource(R.drawable.user_help);
         }
         if(inOut ==1){
             txt_inOut.setText("수신");

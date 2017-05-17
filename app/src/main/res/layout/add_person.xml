@@ -103,6 +103,7 @@
                     android:layout_height="match_parent"
                     android:inputType="textPersonName"
                     android:text="Name"
+                    android:textColor="#ffffff"
                     android:ems="10"
                     android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"
@@ -149,6 +150,7 @@
                     android:layout_height="match_parent"
                     android:inputType="phone"
                     android:ems="10"
+                    android:textColor="#ffffff"
                     android:id="@+id/text_phone" />
 
             </RelativeLayout>

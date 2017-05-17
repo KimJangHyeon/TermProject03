@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,20 +37,25 @@ public class SendMessage extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SendMessage.this, MessageList.class);
-                //db
-                strPhone = phoneNumber.getText().toString();
-                strPhone = filter.toPhoneForm(strPhone);
-                strContent = contents.getText().toString();
+                if (phoneNumber.getText().toString().equals("")) {
+                    Toast.makeText(getApplicationContext(), "전화번호를 입력하세요", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Intent intent = new Intent(SendMessage.this, MessageList.class);
+                    //db
+                    strPhone = phoneNumber.getText().toString();
+                    strPhone = filter.toPhoneForm(strPhone);
+                    strContent = contents.getText().toString();
 
-                long now = System.currentTimeMillis();
-                Date _date = new Date(now);
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초");
-                date = simpleDateFormat.format(_date);
+                    long now = System.currentTimeMillis();
+                    Date _date = new Date(now);
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초");
+                    date = simpleDateFormat.format(_date);
 
-                dbOperator.insertMessageMainList(1, strPhone, strContent, date);
-                dbOperator.insertMessageAllList(1, strPhone, strContent, date);
-                startActivity(intent);
+                    dbOperator.insertMessageMainList(1, strPhone, strContent, date);
+                    dbOperator.insertMessageAllList(1, strPhone, strContent, date);
+                    startActivity(intent);
+                }
             }
         });
     }

@@ -76,7 +76,7 @@ public class PhoneListAdapter extends BaseAdapter{
         holder.phone.setText(phoneListNodeList.get(position).getPhone());
         //icon의 종류에 따른 icon
         if (phoneListNodeList.get(position).getImage().equals("man")) {
-            holder.icon.setImageResource(R.drawable.user_help);
+            holder.icon.setImageResource(R.drawable.select_help);
         }else if (phoneListNodeList.get(position).getImage().equals("woman")){
             holder.icon.setImageResource(R.drawable.number1);
         }else{

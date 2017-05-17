@@ -23,14 +23,16 @@
         <TextView
             android:text="TextView"
             android:layout_width="match_parent"
-            android:gravity="center"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:gravity="top"
             android:id="@+id/txt_content" />
 
     </RelativeLayout>
 
     <TextView
         android:text="TextView"
+        android:textColor="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txt_date" />
