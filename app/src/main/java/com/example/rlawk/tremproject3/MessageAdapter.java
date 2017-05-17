@@ -73,7 +73,7 @@ public class MessageAdapter extends BaseAdapter{
         holder.content.setText(messageNodeList.get(position).getContent());
         holder.date.setText(messageNodeList.get(position).getDate());
         if(nameOrPhone[1].equals("man")){
-            holder.image.setImageResource(R.drawable.person);
+            holder.image.setImageResource(R.drawable.select_help);
         }else if(nameOrPhone[1].equals("woman")){
             holder.image.setImageResource(R.drawable.number1);
         }else{

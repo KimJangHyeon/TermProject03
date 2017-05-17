@@ -18,7 +18,7 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton record, message, phoneList, add, phoneCall;
+    private ImageButton record, message, phoneList, add, phoneCall, delete;
     private ImageButton one, two, three, four, zero, five, six, seven, eight, nine, hash, star;
     private TextView phoneNumber;
     public static Context mContext;
@@ -29,6 +29,45 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         dbOperator = new DBOperator(getApplicationContext());
         final SQLiteManager manager = new SQLiteManager(getApplicationContext(), "ADDRESSBOOK.db", null, 1);
+        DBOperator dbOperator = new DBOperator(getApplicationContext());
+        //dbOperator.insertMessageMainList(1, "010-7752-0788", "hello, dooo", "2017년 05월 17일 05시 10분 53초");
+        //dbOperator.insertMessageMainList(0, "010-7752-0788", "hello, you", "2017년 05월 17일 05시 10분 59초");
+        //dbOperator.insertMessageMainList(0, "010-7752-0788", "hello, wooo", "2017년 05월 17일 05시 20분 00초");
+        //dbOperator.insertMessageMainList(1, "010-7752-0788", "hello, did", "2017년 05월 17일 05시 21분 50초");
+        //dbOperator.insertMessageMainList(1, "010-7752-0788", "hello, dwoeij", "2017년 05월 17일 06시 15분 53초");
+        //dbOperator.insertMessageMainList(1, "010-7752-0788", "hello, hahaha~!", "2017년 05월 17일 07시 10분 53초");
+
+        //dbOperator.insertMessageAllList(1, "010-7752-0788", "hello, dooo", "2017년 05월 17일 05시 10분 53초");
+        //dbOperator.insertMessageAllList(0, "010-7752-0788", "hello, you", "2017년 05월 17일 05시 10분 59초");
+        //dbOperator.insertMessageAllList(0, "010-7752-0788", "hello, wooo", "2017년 05월 17일 05시 20분 00초");
+        //dbOperator.insertMessageAllList(1, "010-7752-0788", "hello, did", "2017년 05월 17일 05시 21분 50초");
+        //dbOperator.insertMessageAllList(1, "010-7752-0788", "hello, dwoeij", "2017년 05월 17일 06시 15분 53초");
+        //dbOperator.insertMessageAllList(1, "010-7752-0788", "hello, hahaha~!", "2017년 05월 17일 07시 10분 53초");
+
+        //dbOperator.insertMessageMainList(1, "010-7752-0712", "hello, dooo", "2017년 05월 17일 05시 10분 53초");
+        //dbOperator.insertMessageMainList(0, "010-7752-0712", "hello, you", "2017년 05월 17일 05시 10분 59초");
+        //dbOperator.insertMessageMainList(0, "010-7752-0712", "hello, wooo", "2017년 05월 17일 05시 20분 00초");
+        //dbOperator.insertMessageMainList(1, "010-7752-0712", "hello, did", "2017년 05월 17일 05시 21분 50초");
+        //dbOperator.insertMessageMainList(1, "010-7752-0712", "hello, dwoeij", "2017년 05월 17일 06시 15분 53초");
+        //dbOperator.insertMessageMainList(1, "010-7752-0712", "hello, hahaha~!", "2017년 05월 17일 07시 10분 53초");
+
+        //dbOperator.insertMessageAllList(1, "010-7752-0712", "hello, dooo", "2017년 05월 17일 05시 10분 53초");
+        //dbOperator.insertMessageAllList(0, "010-7752-0712", "hello, you", "2017년 05월 17일 05시 10분 59초");
+        //dbOperator.insertMessageAllList(0, "010-7752-0712", "hello, wooo", "2017년 05월 17일 05시 20분 00초");
+        //dbOperator.insertMessageAllList(1, "010-7752-0712", "hello, did", "2017년 05월 17일 05시 21분 50초");
+        //dbOperator.insertMessageAllList(1, "010-7752-0712", "hello, dwoeij", "2017년 05월 17일 06시 15분 53초");
+        //dbOperator.insertMessageAllList(1, "010-7752-0712", "hello, hahaha~!", "2017년 05월 17일 07시 10분 53초");
+
+        dbOperator.insertCallList(0, "2017년 04월 10일 05시 00분 51초", "010-2342-1123");
+        dbOperator.insertCallList(-1, "2017년 04월 10일 05시 02분 53초", "010-2342-1123");
+        dbOperator.insertCallList(-1, "2017년 04월 10일 05시 20분 02초", "010-2342-1123");
+        dbOperator.insertCallList(-1, "2017년 04월 10일 06시 00분 01초", "010-2342-1123");
+        dbOperator.insertCallList(0, "2017년 04월 10일 07시 50분 30초", "010-2342-1123");
+        dbOperator.insertCallList(0, "2017년 04월 10일 08시 50분 30초", "010-7752-0788");
+        dbOperator.insertCallList(0, "2017년 04월 12일 07시 30분 30초", "010-7752-0788");
+        dbOperator.insertCallList(1, "2017년 04월 10일 08시 50분 30초", "010-7752-0788");
+        dbOperator.insertCallList(1, "2017년 04월 10일 08시 50분 31초", "010-7752-0728");
+        dbOperator.insertCallList(-1, "2017년 05월 11일 12시 50분 30초", "010-7752-0798");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -56,7 +95,20 @@ public class MainActivity extends AppCompatActivity {
         add = (ImageButton) findViewById(R.id.btn_addPhoneNumber);
         phoneCall = (ImageButton) findViewById(R.id.btn_phoneCall);
         phoneNumber = (TextView) findViewById(R.id.text_phoneNumber);
+        addListenerOnButtonDelete();
+    }
 
+    public void addListenerOnButtonDelete(){
+        delete = (ImageButton) findViewById(R.id.btn_delete);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(back_phoneNumber.length()>0){
+                    back_phoneNumber = back_phoneNumber.substring(0, back_phoneNumber.length()-1);
+                    phoneNumber.setText(toPhoneForm(back_phoneNumber));
+                }
+            }
+        });
     }
 
     //화면 전환 record, message, phoneList

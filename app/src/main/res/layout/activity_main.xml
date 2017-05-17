@@ -122,6 +122,16 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginRight="12dp"
                         android:layout_marginEnd="12dp" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@android:drawable/stat_notify_more"
+                        android:id="@+id/btn_delete"
+                        android:layout_alignBottom="@+id/btn_addPhoneNumber"
+                        android:layout_toLeftOf="@+id/btn_addPhoneNumber"
+                        android:layout_alignParentTop="true" />
+
                 </RelativeLayout>
 
             </LinearLayout>

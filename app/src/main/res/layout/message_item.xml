@@ -2,10 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/line"
     android:layout_height="100dp">
 
     <TextView
         android:text="TextView"
+        android:background="#ffffff"
+        android:layout_margin="1dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/text_date" />
@@ -18,6 +21,8 @@ android:orientation="vertical" android:layout_width="match_parent"
         <LinearLayout
         android:orientation="horizontal"
         android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:layout_margin="1dp"
         android:layout_width="92dp">
 
         <ImageView
@@ -30,24 +35,27 @@ android:orientation="vertical" android:layout_width="match_parent"
 
         <LinearLayout
         android:orientation="vertical"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="1">
 
         <TextView
             android:text="TextView"
+            android:background="#ffffff"
+            android:layout_margin="1dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/text_name"
-            android:layout_weight="0.6" />
+            android:layout_height="30dp" />
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/text_content"
-            android:layout_weight="0.4" />
-    </LinearLayout>
+            <TextView
+                android:text="TextView"
+                android:background="#ffffff"
+                android:layout_margin="1dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/text_content" />
+        </LinearLayout>
 
     </LinearLayout>
 

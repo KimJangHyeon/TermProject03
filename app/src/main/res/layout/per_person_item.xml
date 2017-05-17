@@ -24,18 +24,27 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:srcCompat="@mipmap/ic_launcher"
+                app:srcCompat="@drawable/chat_box1"
                 android:id="@+id/img_chat"
+                android:paddingLeft="90dp"
+                android:paddingRight="90dp"
+                android:padding = "0.0000001dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:scaleType="fitXY"
+                android:layout_weight="1" />
 
             <TextView
                 android:text="TextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:id="@+id/txt_content"
-                android:layout_centerVertical="true" />
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
         </RelativeLayout>
 
     </LinearLayout>
@@ -46,6 +55,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/txt_date"
         android:gravity="right"
-        android:layout_weight="1" />
+        android:layout_alignParentBottom="true" />
 
 </LinearLayout>
